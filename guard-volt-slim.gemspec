@@ -5,7 +5,7 @@ require 'guard/volt/slim/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "guard-volt-slim"
-  spec.version       = Volt::Slim::Guard::VERSION
+  spec.version       = Guard::Volt::Slim::VERSION
   spec.authors       = ["Андрей Большов"]
   spec.email         = ["asnow.dev@gmail.ru"]
 
