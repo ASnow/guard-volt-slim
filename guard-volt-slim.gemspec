@@ -31,6 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "slim"
   spec.add_development_dependency "guard"
+  spec.add_development_dependency "listen"
   spec.add_development_dependency "guard-yield"
   spec.add_dependency 'guard-compat', '~> 1.1'
 end
