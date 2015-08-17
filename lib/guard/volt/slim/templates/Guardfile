@@ -1,0 +1,9 @@
+coffeescript_options = {
+  input: 'app/assets/javascripts',
+  output: 'app/assets/javascripts',
+  patterns: [%r{^app/assets/javascripts/(.+\.(?:coffee|coffee\.md|litcoffee))$}]
+}
+
+guard 'volt-slim' do
+  watch(%r{^app/[^/]+/_views/.+\.slim$})
+end
