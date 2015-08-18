@@ -1,5 +1,6 @@
 # Guard::VoltSlim
 
+Guard that compile slim to sandlebar templates
 
 ## Installation
 
