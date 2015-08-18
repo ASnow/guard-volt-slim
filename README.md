@@ -46,7 +46,7 @@ tpl-sucess-alert
     Your alert
 ```
 OUT:
-```slim
+```xml
 <:Title>
   App title
 <:Body>
@@ -62,7 +62,7 @@ OUT:
 
 # Example 2
 IN:
-```
+```slim
 tpl-body
   | ...
   .class1 class=(true ? 'true-class' : 'false-class' ) | text
@@ -72,7 +72,7 @@ tpl-body
   | ...
 ```
 OUT:
-```
+```xml
 <:Body>
   ...
   <div class="class1 {{ true ? 'true-class' : 'false-class' }}">
