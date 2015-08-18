@@ -1,10 +1,14 @@
 require 'slim/erb_converter'
 require 'guard/compat/plugin'
+require 'pry'
 
 module Guard
-  class VoltSlim < ::Guard::Plugin
+  class VoltSlim < Plugin
     require "guard/volt-slim/version"
     require "guard/volt-slim/mapper"
+    require "guard/volt-slim/filters/attribute_merger"
+    require "guard/volt-slim/filters/code_attributes"
+    require "guard/volt-slim/erb_converter"
     require "guard/volt-slim/compiler"
     
     # Initializes a Guard plugin.

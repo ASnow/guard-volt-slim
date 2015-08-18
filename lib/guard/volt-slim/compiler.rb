@@ -27,7 +27,7 @@ module Guard
       end
 
       def prepare_erb
-        ::Slim::ERBConverter.new({pretty: true, use_html_safe: false}).call(File.read(@origin_path))
+        ERBConverter.new({pretty: true, use_html_safe: false}).call(File.read(@origin_path))
       end
 
       EMPTY_STR = ''
@@ -104,6 +104,11 @@ module Guard
           " class=\"{{ #{val} }}\""
         end
       end
+
+      # {{ _temple_html_attributeremover1 = ''; (_temple_html_attributemerger\d+ = []; (_temple_html_attributemerger\d+\[\d+\] = ("|')[^"']*("|');)*)? _slim_codeattributes1 = (true ? 'true' : 'false'); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((((_slim_codeattributes1.join(" ")))).to_s); else; _temple_html_attributemerger1[1] << ((((_slim_codeattributes1))).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1 }}{{ if !_temple_html_attributeremover1.empty? }} class="{{ _temple_html_attributeremover1 }}"{{ end }}
+
+      # def replace_class_expressions2 str
+      # end
 
 
       EXTRA_BRAKETS_RE = /{{([\s\(]*)(.*?)([\s\)]*)}}/
