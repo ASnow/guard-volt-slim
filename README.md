@@ -27,7 +27,7 @@ Run guard
 
     $ bundle exec guard
 
-Put your slim templates at 'app/<component>/_views' and on change they will be converted and copied to 'app/<component>/views'
+Put your slim templates at 'app/:component/_views' and on change they will be converted and copied to 'app/:component/views'
 
 ## Development
 
