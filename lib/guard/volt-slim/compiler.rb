@@ -18,7 +18,6 @@ module Guard
         replace_erb_brakets html
         replace_templates html
         replace_template_uses html
-        replace_slim_entities html
         replace_local_variables html
         replace_class_expressions html
         replace_extra_brakets html
@@ -27,7 +26,7 @@ module Guard
       end
 
       def prepare_erb
-        ERBConverter.new({pretty: true, use_html_safe: false}).call(File.read(@origin_path))
+        ERBConverter.new({pretty: true, use_html_safe: false, disable_escape: true}).call(File.read(@origin_path))
       end
 
       EMPTY_STR = ''
@@ -59,13 +58,6 @@ module Guard
         str.gsub!(END_PARTIAL_TAG, END_PARTIAL_TAG_REPLACE)
       end
 
-      REMOVE_ENTITY = [
-        '::Temple::Utils.escape_html',
-        '::Temple::Utils.indent_dynamic'
-      ]
-      def replace_slim_entities str
-        REMOVE_ENTITY.each{ |ent| str.gsub! ent, EMPTY_STR }
-      end
 
       def replace_local_variables str
         str.gsub! /{{(.*?)}}/ do |m|

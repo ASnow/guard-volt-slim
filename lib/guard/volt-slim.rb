@@ -8,6 +8,8 @@ module Guard
     require "guard/volt-slim/mapper"
     require "guard/volt-slim/filters/attribute_merger"
     require "guard/volt-slim/filters/code_attributes"
+    require "guard/volt-slim/filters/pretty"
+    require "guard/volt-slim/filters/controls"
     require "guard/volt-slim/erb_converter"
     require "guard/volt-slim/compiler"
     
