@@ -27,6 +27,8 @@ Run guard
 
     $ bundle exec guard
 
+Put your slim templates at 'app/<component>/_views' and on change they will be converted and copied to 'app/<component>/views'
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
