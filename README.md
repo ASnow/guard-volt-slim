@@ -1,8 +1,6 @@
 # Guard::VoltSlim
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/guard/volt-slim`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Guard that compile slim to sandlebar templates
 
 ## Installation
 
@@ -20,9 +18,74 @@ Or install it yourself as:
 
     $ gem install guard-volt-slim
 
+Add config to Guardfile
+
+    $ bundle exec guard init guard-volt-slim
+    
 ## Usage
 
-TODO: Write usage instructions here
+Run guard
+
+    $ bundle exec guard
+
+Put your slim templates at 'app/:component/_views' and on change they will be converted and copied to 'app/:component/views'
+
+
+Write your slim like this
+
+# Examples
+
+Example 1
+In:
+```slim
+tpl-title
+  | App title
+tpl-body
+  | ...
+  use-sucess-alert
+  | ...
+tpl-sucess-alert
+  .alert
+    Your alert
+```
+OUT:
+```xml
+<:Title>
+  App title
+<:Body>
+  ...
+  <:sucess-alert></:sucess-alert>
+  ...
+<:Sucess-alert>
+  .alert
+    Your alert
+```
+
+Example 2
+IN:
+```slim
+tpl-body
+  | ...
+  .class1 class=(true ? 'true-class' : 'false-class' ) | text
+  - array.each do |item|
+    .item
+      = item[:name]
+  | ...
+```
+OUT:
+```xml
+<:Body>
+  ...
+  <div class="class1 {{ true ? 'true-class' : 'false-class' }}">
+    | text
+  </div>
+  {{ array.each do |item| }}
+    <div class="item">
+      {{ item[:name] }}
+    </div>
+  {{ end }}
+  ...
+```
 
 ## Development
 
