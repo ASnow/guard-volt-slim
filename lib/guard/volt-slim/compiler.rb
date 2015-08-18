@@ -9,7 +9,7 @@ module Guard
 
       def initialize path
         @origin_path = path
-        @target_path = Mapper.app_path origin
+        @target_path = Mapper.app_path path
       end
 
       def build
