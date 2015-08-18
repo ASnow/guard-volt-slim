@@ -20,9 +20,14 @@ Or install it yourself as:
 
     $ gem install guard-volt-slim
 
+Add config to Guardfile
+
+    $ bundle exec guard init guard-volt-slim
+    
 ## Usage
 
-TODO: Write usage instructions here
+Run guard
+    $ bundle exec guard
 
 ## Development
 
