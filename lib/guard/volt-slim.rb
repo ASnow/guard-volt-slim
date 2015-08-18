@@ -1,6 +1,6 @@
 require 'slim/erb_converter'
-require "volt-slim/guard/version"
-require "volt-slim/guard/mapper"
+require "guard/volt-slim/guard/version"
+require "guard/volt-slim/guard/mapper"
 require 'guard/compat/plugin'
 
 module Guard
