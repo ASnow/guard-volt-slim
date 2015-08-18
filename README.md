@@ -27,6 +27,7 @@ Add config to Guardfile
 ## Usage
 
 Run guard
+
     $ bundle exec guard
 
 ## Development
