@@ -1,7 +1,5 @@
 module Guard
-  module Volt
-    module Slim
+  class VoltSlim
       VERSION = "0.1.0"
-    end
   end
 end

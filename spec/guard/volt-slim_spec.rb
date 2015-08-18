@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Guard::Volt::Slim do
+describe Guard::VoltSlim do
   it 'has a version number' do
-    expect(Guard::Volt::Slim::VERSION).not_to be nil
+    expect(Guard::VoltSlim::VERSION).not_to be nil
   end
 
   it 'does something useful' do

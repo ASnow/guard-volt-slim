@@ -1,0 +1,3 @@
+guard 'volt-slim' do
+  watch(%r{^app/[^/]+/_views/.+\.slim$})
+end

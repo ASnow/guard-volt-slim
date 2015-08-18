@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'guard/volt/slim/version'
+require 'guard/volt-slim/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "guard-volt-slim"
-  spec.version       = Guard::Volt::Slim::VERSION
+  spec.version       = Guard::VoltSlim::VERSION
   spec.authors       = ["Андрей Большов"]
   spec.email         = ["asnow.dev@gmail.ru"]
 
