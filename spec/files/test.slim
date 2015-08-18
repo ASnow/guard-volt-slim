@@ -1,21 +1,12 @@
-<:Body>
+tpl-body
+  .code-form
+    label
+      | Код
+      input type="text" value=page._code
 
-  <div class="code-form">
-
-    <label>
-Код
-<input type="text" value="{{ page._code }}" />
-
-</label><input e-click="add_code" type="submit" />
-
-  </div>
-  <div class="codes-list">
-{{ store._codes.each do |code| }}
-    <div class="code">
-
-      {{ code.uid }}
-
-    </div>{{ end }}
-  </div>
-  <div class="test {{ true ? 'true' : 'false' }}">
-</div>
+    input type="submit" e-click="add_code"
+  .codes-list
+    - store._codes.each do |code|
+      .code
+        | {{ code.uid }}
+  .test class=(true ? 'true' : 'false')
