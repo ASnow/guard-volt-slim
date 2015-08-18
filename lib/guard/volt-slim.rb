@@ -1,10 +1,11 @@
 require 'slim/erb_converter'
-require "guard/volt-slim/version"
-require "guard/volt-slim/mapper"
 require 'guard/compat/plugin'
 
 module Guard
   class VoltSlim < ::Guard::Plugin
+    require "guard/volt-slim/version"
+    require "guard/volt-slim/mapper"
+    
     # Initializes a Guard plugin.
     # Don't do any work here, especially as Guard plugins get initialized even if they are not in an active group!
     #
