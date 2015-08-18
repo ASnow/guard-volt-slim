@@ -30,6 +30,35 @@ Run guard
 
 Put your slim templates at 'app/:component/_views' and on change they will be converted and copied to 'app/:component/views'
 
+
+Write your slim like this
+
+In:
+```slim
+tpl-title
+  | App title
+tpl-body
+  | ...
+  use-sucess-alert
+  | ...
+tpl-sucess-alert
+  .alert
+    Your alert
+```
+OUT:
+```slim
+<:Title>
+  App title
+<:Body>
+  ...
+  <:sucess-alert></:sucess-alert>
+  ...
+<:Sucess-alert>
+  .alert
+    Your alert
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake rspec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
