@@ -5,6 +5,7 @@ module Guard
   class VoltSlim < ::Guard::Plugin
     require "guard/volt-slim/version"
     require "guard/volt-slim/mapper"
+    require "guard/volt-slim/compiler"
     
     # Initializes a Guard plugin.
     # Don't do any work here, especially as Guard plugins get initialized even if they are not in an active group!
@@ -32,7 +33,6 @@ module Guard
     # @return [Object] the task result
     #
     def stop
-      logger.info "Guard::Yield - Done!"
     end
 
     # Called when `reload|r|z + enter` is pressed.
