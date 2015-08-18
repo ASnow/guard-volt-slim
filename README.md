@@ -33,6 +33,9 @@ Put your slim templates at 'app/:component/_views' and on change they will be co
 
 Write your slim like this
 
+# Examples
+
+Example 1
 In:
 ```slim
 tpl-title
@@ -58,9 +61,7 @@ OUT:
     Your alert
 ```
 
-
-
-# Example 2
+Example 2
 IN:
 ```slim
 tpl-body
