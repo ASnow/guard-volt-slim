@@ -1,6 +1,5 @@
 require 'slim/erb_converter'
 require 'guard/compat/plugin'
-require 'pry'
 
 module Guard
   class VoltSlim < Plugin

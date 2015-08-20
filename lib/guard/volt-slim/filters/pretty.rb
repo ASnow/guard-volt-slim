@@ -20,7 +20,9 @@ module Guard
           end
         end
 
-
+        def preamble
+          [:multi]
+        end
       end
     end
   end

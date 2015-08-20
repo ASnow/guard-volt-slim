@@ -14,7 +14,6 @@ module Guard
 
       def build
         html = prepare_erb
-        remove_slim_header_vars html
         replace_erb_brakets html
         replace_templates html
         replace_template_uses html
@@ -30,10 +29,6 @@ module Guard
       end
 
       EMPTY_STR = ''
-      SLIM_VARS = '<% _temple_html_pretty1 = /<code|<pre|<textarea/ %>'
-      def remove_slim_header_vars str
-        str.gsub!(SLIM_VARS, EMPTY_STR)
-      end
       ERB_BRAKETS = %r{<%=?\s*(.*?)\s*%>}
       VOLT_BRAKETS = '{{ \1 }}'
       def replace_erb_brakets str
