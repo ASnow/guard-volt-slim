@@ -5,6 +5,7 @@ module Guard
   class VoltSlim < Plugin
     require "guard/volt-slim/version"
     require "guard/volt-slim/mapper"
+    require "guard/volt-slim/filters/attr_value_converter"
     require "guard/volt-slim/filters/attribute_merger"
     require "guard/volt-slim/filters/code_attributes"
     require "guard/volt-slim/filters/pretty"

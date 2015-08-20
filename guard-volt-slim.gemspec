@@ -30,6 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec"
   spec.add_dependency "slim"
+  spec.add_dependency 'sorcerer'
   spec.add_dependency 'guard',   '~> 2.13'
   spec.add_dependency 'guard-compat', '~> 1.1'
 end

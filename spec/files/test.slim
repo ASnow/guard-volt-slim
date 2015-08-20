@@ -10,6 +10,7 @@ tpl-body
       .code
         | {{ code.uid }}
   .test class=(true ? 'true' : 'false')
+  .test class=(if true then 'true' elsif false; 1; else 'false' end)
 
 tpl-title
   | BonUse покупки

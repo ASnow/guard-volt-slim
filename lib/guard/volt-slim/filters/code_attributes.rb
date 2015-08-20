@@ -60,9 +60,6 @@ module Guard
             [:dynamic, code]
           # end
         end
-
-        def convert code
-        end
       end
     end
   end
