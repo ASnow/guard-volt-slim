@@ -8,7 +8,7 @@ module Guard
       replace :'Slim::Controls', Guard::VoltSlim::Filters::Controls
 
       # remove :AttributeMerger
-      # remove :AttributeRemover
+      remove :AttributeRemover
     end
   end
 end
