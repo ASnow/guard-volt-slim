@@ -23,6 +23,23 @@ module Guard
         def preamble
           [:multi]
         end
+
+        def on_html_tag(name, attrs, content = nil)
+          content = nil if name =~ /\A(tpl|use)-/ && empty_exp?(content)
+          # old_indent_next = @indent_next
+          # @indent_next = true
+          # result = super
+          # @indent_next = old_indent_next
+          # result
+          super
+        end
+        # def tag_indent(name)
+        #   if name =~ /\A(tpl|use)-/
+        #     indent
+        #   else
+        #     super
+        #   end
+        # end
       end
     end
   end

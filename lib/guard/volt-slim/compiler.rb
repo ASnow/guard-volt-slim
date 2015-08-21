@@ -3,7 +3,7 @@ module Guard
     class Compiler
       def self.run paths
         paths.each do |path|
-          new(path).build
+          new(path).build!
         end
       end
 
@@ -14,26 +14,20 @@ module Guard
 
       def build
         html = prepare_erb
-        replace_erb_brakets html
         replace_templates html
         replace_template_uses html
-        replace_local_variables html
-        replace_class_expressions html
         replace_extra_brakets html
-
-        File.write(@target_path, html)
+        html
+      end
+      def build!
+        File.write(@target_path, build)
       end
 
       def prepare_erb
-        ERBConverter.new({pretty: true, use_html_safe: false, disable_escape: true}).call(File.read(@origin_path))
+        SandlebarsConverter.new({pretty: true, use_html_safe: false, disable_escape: true}).call(File.read(@origin_path))
       end
 
       EMPTY_STR = ''
-      ERB_BRAKETS = %r{<%=?\s*(.*?)\s*%>}
-      VOLT_BRAKETS = '{{ \1 }}'
-      def replace_erb_brakets str
-        str.gsub!(ERB_BRAKETS, VOLT_BRAKETS)
-      end
 
       TEMPLATE_TAG = %r{<tpl-([\w\-:]+)(\s[^>]*)?>}i
       END_TEMPLATE_TAG = %r{</tpl-([\w\-:]+)>}i
@@ -54,43 +48,8 @@ module Guard
       end
 
 
-      def replace_local_variables str
-        str.gsub! /{{(.*?)}}/ do |m|
-          txt = $1.gsub(/, false, "\\n\s*", _temple_html_pretty\d+/, EMPTY_STR)
-          txt = txt.gsub(/ _temple_html_pretty\d+ = \/<code\|<pre\|<textarea\/;/, EMPTY_STR)
-          txt = txt.gsub(/, true, "\\n\s*", _temple_html_pretty\d+/, EMPTY_STR)
-          "{{#{txt}}}"
-        end          
-      end
-
-      CLASS_EXPRESSIONS_RE = %r|{{ _temple_html_attributeremover\d+ = (.*?)\.to_s }}{{ if !_temple_html_attributeremover\d+\.empty\? }} class="{{ _temple_html_attributeremover\d+ }}"{{ end }}|
-      CLASS_EXTRA_BRAKETS_RE = /([\s\(]*)(.*?)([\s\)]*)/
       OPEN_BRAKETS = '('
       CLOSE_BRAKETS = ')'
-      def replace_class_expressions str
-        str.gsub! CLASS_EXPRESSIONS_RE do |m|
-          val = $1.gsub! CLASS_EXTRA_BRAKETS_RE do |m|
-            $1.count(OPEN_BRAKETS)
-            index = 0
-            unclosed = 0
-            $2.each_char do |chr|
-              if chr == OPEN_BRAKETS
-                index -= 1
-              elsif chr == CLOSE_BRAKETS
-                index += 1
-              end
-
-              if index > unclosed
-                unclosed = index
-              end
-            end
-                
-            "#{ '(' * unclosed }#{ $2 }#{ ')' * unclosed }"
-          end
-
-          " class=\"{{ #{val} }}\""
-        end
-      end
 
       # {{ _temple_html_attributeremover1 = ''; (_temple_html_attributemerger\d+ = []; (_temple_html_attributemerger\d+\[\d+\] = ("|')[^"']*("|');)*)? _slim_codeattributes1 = (true ? 'true' : 'false'); if Array === _slim_codeattributes1; _slim_codeattributes1 = _slim_codeattributes1.flatten; _slim_codeattributes1.map!(&:to_s); _slim_codeattributes1.reject!(&:empty?); _temple_html_attributemerger1[1] << ((((_slim_codeattributes1.join(" ")))).to_s); else; _temple_html_attributemerger1[1] << ((((_slim_codeattributes1))).to_s); end; _temple_html_attributemerger1[1]; _temple_html_attributeremover1 << ((_temple_html_attributemerger1.reject(&:empty?).join(" ")).to_s); _temple_html_attributeremover1 }}{{ if !_temple_html_attributeremover1.empty? }} class="{{ _temple_html_attributeremover1 }}"{{ end }}
 

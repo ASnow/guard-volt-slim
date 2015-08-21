@@ -10,7 +10,8 @@ module Guard
     require "guard/volt-slim/filters/code_attributes"
     require "guard/volt-slim/filters/pretty"
     require "guard/volt-slim/filters/controls"
-    require "guard/volt-slim/erb_converter"
+    require "guard/volt-slim/sandlebars_generator"
+    require "guard/volt-slim/sandlebars_converter"
     require "guard/volt-slim/compiler"
     
     # Initializes a Guard plugin.

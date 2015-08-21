@@ -5,13 +5,27 @@ describe Guard::VoltSlim do
     expect(Guard::VoltSlimVersion).not_to be nil
   end
 
+  it 'show test convert' do
+    html = Guard::VoltSlim::Compiler.new('spec/files/test.slim').build
+    puts html
+    # expect(true).to eq(true)
+  end
 
-  it 'runs convert' do
-    runner = Guard::VoltSlim.new
-    # runner.run_on_additions ['spec/files/test.slim']
-    # puts Guard::VoltSlim::ERBConverter.new({pretty: true, use_html_safe: false}).call(File.read('spec/files/test.slim'))
-    puts Guard::VoltSlim::ERBConverter.new({pretty: true, use_html_safe: false, disable_escape: true}).call(File.read('spec/files/test.slim'))
-    expect(false).to eq(true)
+  it 'convert templates' do
+    html = Guard::VoltSlim::Compiler.new('spec/files/template.slim').build
+    expect(html).to eq(<<SBR)
+<:Template>
+Body
+SBR
+  end
+
+  it 'convert template use' do
+    html = Guard::VoltSlim::Compiler.new('spec/files/template_use.slim').build
+    expect(html).to eq(<<SBR.gsub(/\n\z/, ''))
+<:template>
+Body
+</:template>
+SBR
   end
 
 end
