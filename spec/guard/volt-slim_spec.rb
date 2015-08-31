@@ -12,7 +12,10 @@ describe Guard::VoltSlim do
   end
 
   it 'convert templates' do
-    html = Guard::VoltSlim::Compiler.new('spec/files/template.slim').build
+    html = Guard::VoltSlim::Compiler.new(template: <<SLIM).build
+tpl-template
+  | Body
+SLIM
     expect(html).to eq(<<SBR)
 <:Template>
 Body
@@ -20,9 +23,24 @@ SBR
   end
 
   it 'convert template use' do
-    html = Guard::VoltSlim::Compiler.new('spec/files/template_use.slim').build
+    html = Guard::VoltSlim::Compiler.new(template: <<SLIM).build
+use-template
+  | Body
+SLIM
     expect(html).to eq(<<SBR.gsub(/\n\z/, ''))
 <:template>
+Body
+</:template>
+SBR
+  end
+
+  it 'convert template use with attributes' do
+    html = Guard::VoltSlim::Compiler.new(template: <<SLIM).build
+use-template attr=val
+  | Body
+SLIM
+    expect(html).to eq(<<SBR.gsub(/\n\z/, ''))
+<:template attr="{{ val }}">
 Body
 </:template>
 SBR
