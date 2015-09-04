@@ -10,6 +10,7 @@ module Guard
 
       # remove :AttributeMerger
       remove :AttributeRemover
+      remove :'Temple::Filters::CodeMerger'
     end
   end
 end
