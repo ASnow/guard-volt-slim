@@ -13,6 +13,7 @@ module Guard
     require "guard/volt-slim/sandlebars_generator"
     require "guard/volt-slim/sandlebars_converter"
     require "guard/volt-slim/compiler"
+    require "guard/volt-slim/sprockets/slim_template"
     
     # Initializes a Guard plugin.
     # Don't do any work here, especially as Guard plugins get initialized even if they are not in an active group!
