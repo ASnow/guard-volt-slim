@@ -1,3 +1,5 @@
+# Deprectated. Use volt-slim https://github.com/ASnow/volt-slim
+
 # Guard::VoltSlim
 
 Guard that compile slim to sandlebar templates
