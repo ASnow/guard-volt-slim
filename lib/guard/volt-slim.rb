@@ -16,7 +16,7 @@ module Guard
     # @option options [Boolean] any_return allow any object to be returned from a watcher
     #
     def initialize(options = {})
-      puts "Depricated!!! Use volt-slim gem"
+      puts "Depricated!!! Use volt-slim gem instead guard-volt-slim"
       super
     end
 
