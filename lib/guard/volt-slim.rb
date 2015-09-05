@@ -1,19 +1,10 @@
-require 'slim/erb_converter'
 require 'guard/compat/plugin'
 
 module Guard
   class VoltSlim < Plugin
     require "guard/volt-slim/version"
     require "guard/volt-slim/mapper"
-    require "guard/volt-slim/filters/attr_value_converter"
-    require "guard/volt-slim/filters/attribute_merger"
-    require "guard/volt-slim/filters/code_attributes"
-    require "guard/volt-slim/filters/pretty"
-    require "guard/volt-slim/filters/controls"
-    require "guard/volt-slim/sandlebars_generator"
-    require "guard/volt-slim/sandlebars_converter"
     require "guard/volt-slim/compiler"
-    require "guard/volt-slim/sprockets/slim_template"
     
     # Initializes a Guard plugin.
     # Don't do any work here, especially as Guard plugins get initialized even if they are not in an active group!
@@ -24,6 +15,7 @@ module Guard
     # @option options [Boolean] any_return allow any object to be returned from a watcher
     #
     def initialize(options = {})
+      puts "Depricated!!! Use volt-slim gem"
       super
     end
 

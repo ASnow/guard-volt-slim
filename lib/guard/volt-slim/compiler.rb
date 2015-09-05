@@ -21,7 +21,7 @@ module Guard
       end
 
       def build
-        SandlebarsConverter.new({pretty: true, use_html_safe: false, disable_escape: true}).call(@template)
+        ::Volt::Slim::Compiler.build @template
       end
       def build!
         File.write(@target_path, build)
