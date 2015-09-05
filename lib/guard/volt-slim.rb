@@ -1,4 +1,5 @@
 require 'guard/compat/plugin'
+require "volt/slim"
 
 module Guard
   class VoltSlim < Plugin
